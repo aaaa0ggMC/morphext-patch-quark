@@ -1,0 +1,26 @@
+{
+  "factions": {
+    "underworld": {
+      "parent": "monster"
+    },
+    "crustacean": {
+      "parent": "animal"
+    }
+  },
+  "entity_mappings": {
+    "quark:stoneling": ["underworld"],
+    "quark.stoneling": ["underworld"],
+    "quark:wraith": ["underworld", "undead"],
+    "quark.wraith": ["underworld", "undead"],
+    "quark:foxhound": ["nether", "beast"],
+    "quark.foxhound": ["nether", "beast"],
+    "quark:crab": ["crustacean", "animal"],
+    "quark.crab": ["crustacean", "animal"],
+    "quark:frog": ["animal"],
+    "quark.frog": ["animal"]
+  },
+  "relations": [
+    { "from": "underworld", "to": "underworld", "relation": "RELATIVE", "symmetric": true },
+    { "from": "crustacean", "to": "crustacean", "relation": "RELATIVE", "symmetric": true }
+  ]
+}

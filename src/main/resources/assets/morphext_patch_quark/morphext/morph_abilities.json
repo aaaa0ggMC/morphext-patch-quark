@@ -1,0 +1,182 @@
+{
+  "quark:stoneling": {
+    "hands": true,
+    "rightHand": "arm_right",
+    "leftHand": "arm_left",
+    "handRotationX": 180,
+    "abilities": ["climb", "faction_underworld_relative"],
+    "actions": ["quark_stoneling_toss", "quark_stoneling_vanish", "quark_stoneling_burrow", "quark_stoneling_ore_magnet"],
+    "damageImmunities": ["fall", "drown", "cactus", "projectile"],
+    "knockbackResistance": 1.0,
+    "speed": 0.085
+  },
+  "quark.stoneling": {
+    "hands": true,
+    "rightHand": "arm_right",
+    "leftHand": "arm_left",
+    "handRotationX": 180,
+    "abilities": ["climb", "faction_underworld_relative"],
+    "actions": ["quark_stoneling_toss", "quark_stoneling_vanish", "quark_stoneling_burrow", "quark_stoneling_ore_magnet"],
+    "damageImmunities": ["fall", "drown", "cactus", "projectile"],
+    "knockbackResistance": 1.0,
+    "speed": 0.085
+  },
+  "quark:frog": {
+    "hands": true,
+    "rightHand": "rightArm",
+    "leftHand": "leftArm",
+    "abilities": ["swim", "prevent_fall", "jumping", "faction_aquatic", "faction_animal"],
+    "actions": ["quark_frog_leap", "quark_frog_tongue", "quark_frog_wednesday"],
+    "damageImmunities": ["fall"],
+    "speed": 0.101
+  },
+  "quark.frog": {
+    "hands": true,
+    "rightHand": "rightArm",
+    "leftHand": "leftArm",
+    "abilities": ["swim", "prevent_fall", "jumping", "faction_aquatic", "faction_animal"],
+    "actions": ["quark_frog_leap", "quark_frog_tongue", "quark_frog_wednesday"],
+    "damageImmunities": ["fall"],
+    "speed": 0.101
+  },
+  "quark:crab": {
+    "hands": true,
+    "rightHand": "rightArm",
+    "leftHand": "leftArm",
+    "abilities": ["swim", "water_breath", "thorns", "faction_aquatic", "faction_arthropod"],
+    "actions": ["quark_crab_pincer_snip", "quark_crab_sidestep", "quark_crab_shell_shield", "quark_crab_rave"],
+    "damageImmunities": ["drown"],
+    "armor": 3.0,
+    "armorToughness": 2.0,
+    "knockbackResistance": 0.5,
+    "speed": 0.101
+  },
+  "quark.crab": {
+    "hands": true,
+    "rightHand": "rightArm",
+    "leftHand": "leftArm",
+    "abilities": ["swim", "water_breath", "thorns", "faction_aquatic", "faction_arthropod"],
+    "actions": ["quark_crab_pincer_snip", "quark_crab_sidestep", "quark_crab_shell_shield", "quark_crab_rave"],
+    "damageImmunities": ["drown"],
+    "armor": 3.0,
+    "armorToughness": 2.0,
+    "knockbackResistance": 0.5,
+    "speed": 0.101
+  },
+  "quark:wraith": {
+    "hands": true,
+    "rightHand": "rightArm",
+    "leftHand": "leftArm",
+    "abilities": ["fly", "prevent_fall", "rotten", "faction_undead_lord", "faction_underworld", "quark_wraith_light_fear"],
+    "actions": ["quark_wraith_shriek", "quark_wraith_phase", "quark_wraith_soul_grasp"],
+    "immunities": ["poison", "wither", "regeneration"],
+    "damageImmunities": ["fall", "inFire", "onFire", "lava", "hotFloor", "inWall", "drown"],
+    "attackDamage": 3.0,
+    "knockbackResistance": 1.0,
+    "speed": 0.105
+  },
+  "quark.wraith": {
+    "hands": true,
+    "rightHand": "rightArm",
+    "leftHand": "leftArm",
+    "abilities": ["fly", "prevent_fall", "rotten", "faction_undead_lord", "faction_underworld", "quark_wraith_light_fear"],
+    "actions": ["quark_wraith_shriek", "quark_wraith_phase", "quark_wraith_soul_grasp"],
+    "immunities": ["poison", "wither", "regeneration"],
+    "damageImmunities": ["fall", "inFire", "onFire", "lava", "hotFloor", "inWall", "drown"],
+    "attackDamage": 3.0,
+    "knockbackResistance": 1.0,
+    "speed": 0.105
+  },
+  "quark:foxhound": {
+    "hands": true,
+    "rightHand": "rightFrontLeg",
+    "leftHand": "leftFrontLeg",
+    "abilities": ["fire_proof", "hungerless", "faction_nether", "faction_beast"],
+    "actions": ["quark_foxhound_fire_breath", "quark_foxhound_flame_pounce", "quark_foxhound_love_burn", "quark_foxhound_smelt_touch"],
+    "attackDamage": 2.0,
+    "speed": 0.108
+  },
+  "quark.foxhound": {
+    "hands": true,
+    "rightHand": "rightFrontLeg",
+    "leftHand": "leftFrontLeg",
+    "abilities": ["fire_proof", "hungerless", "faction_nether", "faction_beast"],
+    "actions": ["quark_foxhound_fire_breath", "quark_foxhound_flame_pounce", "quark_foxhound_love_burn", "quark_foxhound_smelt_touch"],
+    "attackDamage": 2.0,
+    "speed": 0.108
+  },
+  "quark:ashen": {
+    "hands": true,
+    "rightHand": "bipedRightArm",
+    "leftHand": "bipedLeftArm",
+    "abilities": ["rotten", "faction_undead", "faction_nether"],
+    "actions": ["quark_ashen_blind_shot", "quark_ashen_ash_veil"],
+    "immunities": ["poison", "regeneration"],
+    "speed": 0.101
+  },
+  "quark.ashen": {
+    "hands": true,
+    "rightHand": "bipedRightArm",
+    "leftHand": "bipedLeftArm",
+    "abilities": ["rotten", "faction_undead", "faction_nether"],
+    "actions": ["quark_ashen_blind_shot", "quark_ashen_ash_veil"],
+    "immunities": ["poison", "regeneration"],
+    "speed": 0.101
+  },
+  "quark:dweller": {
+    "hands": true,
+    "rightHand": "bipedRightArm",
+    "leftHand": "bipedLeftArm",
+    "abilities": ["rotten", "faction_undead", "faction_underworld"],
+    "actions": ["quark_dweller_pierce_shot", "quark_dweller_lurk", "quark_dweller_ambush_mark"],
+    "immunities": ["poison", "regeneration"],
+    "attackDamage": 3.0,
+    "armor": 3.0,
+    "speed": 0.099
+  },
+  "quark.dweller": {
+    "hands": true,
+    "rightHand": "bipedRightArm",
+    "leftHand": "bipedLeftArm",
+    "abilities": ["rotten", "faction_undead", "faction_underworld"],
+    "actions": ["quark_dweller_pierce_shot", "quark_dweller_lurk", "quark_dweller_ambush_mark"],
+    "immunities": ["poison", "regeneration"],
+    "attackDamage": 3.0,
+    "armor": 3.0,
+    "speed": 0.099
+  },
+  "quark:pirate": {
+    "hands": true,
+    "rightHand": "bipedRightArm",
+    "leftHand": "bipedLeftArm",
+    "abilities": ["rotten", "faction_undead"],
+    "actions": ["quark_pirate_flourish", "quark_pirate_captain"],
+    "immunities": ["poison", "regeneration"],
+    "speed": 0.101
+  },
+  "quark.pirate": {
+    "hands": true,
+    "rightHand": "bipedRightArm",
+    "leftHand": "bipedLeftArm",
+    "abilities": ["rotten", "faction_undead"],
+    "actions": ["quark_pirate_flourish", "quark_pirate_captain"],
+    "immunities": ["poison", "regeneration"],
+    "speed": 0.101
+  },
+  "quark:archaeologist": {
+    "hands": true,
+    "rightHand": "villagerArms",
+    "leftHand": "villagerArms",
+    "abilities": ["faction_villager"],
+    "actions": ["quark_archaeologist_appraise"],
+    "speed": 0.133
+  },
+  "quark.archaeologist": {
+    "hands": true,
+    "rightHand": "villagerArms",
+    "leftHand": "villagerArms",
+    "abilities": ["faction_villager"],
+    "actions": ["quark_archaeologist_appraise"],
+    "speed": 0.133
+  }
+}

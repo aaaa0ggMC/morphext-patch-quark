@@ -1,0 +1,16 @@
+[
+{
+  "modid": "morphext_patch_quark",
+  "name": "Morph Extension - Quark Patch",
+  "description": "Quark ecosystem integration and abilities patch for Morph Extension.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["aaaa0ggmc"],
+  "credits": "Vazkii for Quark, McHorse for Metamorph",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["aaaa0ggmc_morph_extension", "quark", "metamorph"]
+}
+]
