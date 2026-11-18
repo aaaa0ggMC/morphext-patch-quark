@@ -75,10 +75,10 @@ public class QuarkFoxhoundLoveBurnAction implements IAction, ICooldownAction {
         List<EntityLivingBase> nearby = world.getEntitiesWithinAABB(EntityLivingBase.class, aabb,
                 e -> e != null && e.isEntityAlive() && !e.equals(entity));
         for (EntityLivingBase target : nearby) {
-            if (target instanceof IMob) {
+            if (aaaa0ggmc.morphext.faction.FactionEnmity.isValidTargetFor(entity, target)) {
                 continue;
             }
-            if (target.isOnSameTeam(entity) || target instanceof EntityPlayer) {
+            if (aaaa0ggmc.morphext.faction.FactionEnmity.isAlly(entity, target) || target.isOnSameTeam(entity)) {
                 target.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 160, 0, false, true));
             }
         }

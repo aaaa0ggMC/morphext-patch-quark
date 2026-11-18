@@ -78,17 +78,17 @@ public class QuarkPirateCaptainAction implements IAction, ICooldownAction {
 
         Vec3d look = entity.getLookVec();
         for (EntityLivingBase target : nearby) {
-            if (target instanceof IMob && !target.isEntityUndead()) {
-                // 威压震慑：非亡灵敌怪虚弱 + 轻微击退
+            if (aaaa0ggmc.morphext.faction.FactionEnmity.isAlly(entity, target) || target.isOnSameTeam(entity) || isCrew(target, entity)) {
+                // 船员集结：亡灵船员与队友获得 8 秒力量 I 与速度 I
+                target.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 160, 0, false, true));
+                target.addPotionEffect(new PotionEffect(MobEffects.SPEED, 160, 0, false, true));
+            } else if (aaaa0ggmc.morphext.faction.FactionEnmity.isValidTargetFor(entity, target)) {
+                // 威压震慑：非友军敌怪虚弱 + 轻微击退
                 target.addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 80, 0, false, true));
                 Vec3d toTarget = new Vec3d(target.posX - entity.posX, 0, target.posZ - entity.posZ).normalize();
                 if (look.x * toTarget.x + look.z * toTarget.z > 0.1D) {
                     target.knockBack(entity, 0.5F, -toTarget.x, -toTarget.z);
                 }
-            } else if (target.isOnSameTeam(entity) || isCrew(target, entity)) {
-                // 船员集结：亡灵船员与队友获得 8 秒力量 I 与速度 I
-                target.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 160, 0, false, true));
-                target.addPotionEffect(new PotionEffect(MobEffects.SPEED, 160, 0, false, true));
             }
         }
 

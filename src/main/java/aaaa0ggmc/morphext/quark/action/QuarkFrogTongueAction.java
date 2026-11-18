@@ -65,7 +65,7 @@ public class QuarkFrogTongueAction implements IAction, ICooldownAction {
 
         // 优先拉取生物
         List<EntityLivingBase> targets = world.getEntitiesWithinAABB(EntityLivingBase.class, aabb,
-                e -> e != null && e.isEntityAlive() && !e.equals(entity));
+                e -> e != null && e.isEntityAlive() && aaaa0ggmc.morphext.faction.FactionEnmity.isValidTargetFor(entity, e));
 
         EntityLivingBase pullTarget = null;
         double minAngle = 0.5D;

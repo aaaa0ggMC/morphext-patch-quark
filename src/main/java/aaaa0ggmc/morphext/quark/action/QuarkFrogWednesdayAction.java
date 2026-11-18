@@ -84,7 +84,7 @@ public class QuarkFrogWednesdayAction implements IAction, ICooldownAction {
         double aggroRadius = wednesday ? 12.0D : 10.0D;
         AxisAlignedBB aabb = entity.getEntityBoundingBox().grow(aggroRadius, 4.0D, aggroRadius);
         List<EntityLivingBase> hostiles = world.getEntitiesWithinAABB(EntityLivingBase.class, aabb,
-                e -> e != null && e.isEntityAlive() && !e.equals(entity) && e instanceof IMob && e instanceof EntityLiving);
+                e -> e != null && e.isEntityAlive() && e instanceof EntityLiving && aaaa0ggmc.morphext.faction.FactionEnmity.isValidTargetFor(entity, e));
         for (EntityLivingBase hostile : hostiles) {
             ((EntityLiving) hostile).setAttackTarget(entity);
         }

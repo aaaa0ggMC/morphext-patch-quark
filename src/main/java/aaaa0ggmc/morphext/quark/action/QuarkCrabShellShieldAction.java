@@ -69,7 +69,7 @@ public class QuarkCrabShellShieldAction implements IAction, ICooldownAction {
         Vec3d look = entity.getLookVec();
         AxisAlignedBB aabb = entity.getEntityBoundingBox().grow(2.5D, 1.0D, 2.5D);
         List<EntityLivingBase> nearby = world.getEntitiesWithinAABB(EntityLivingBase.class, aabb,
-                e -> e != null && e.isEntityAlive() && !e.equals(entity));
+                e -> e != null && e.isEntityAlive() && aaaa0ggmc.morphext.faction.FactionEnmity.isValidTargetFor(entity, e));
 
         for (EntityLivingBase target : nearby) {
             Vec3d toTarget = new Vec3d(target.posX - entity.posX, 0, target.posZ - entity.posZ).normalize();

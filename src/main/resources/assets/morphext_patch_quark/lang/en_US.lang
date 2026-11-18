@@ -55,3 +55,5 @@ morphext.metamorph.desc.quark_pirate_captain=Blow the captain's call: nearby und
 morphext.metamorph.action.quark_archaeologist_appraise=Archaeologist Appraisal
 morphext.metamorph.desc.quark_archaeologist_appraise=Trade 1 emerald for an expert appraisal, yielding 2-4 random ore or treasure finds with trading jingles and sparkles! (60s cooldown)
 morphext.variant.pirate_captain=(Captain)
+morph.category.quark=Quark
+morphext.faction.underworld.desc=Includes stonelings, dwellers and wraiths inhabiting the deep caves.

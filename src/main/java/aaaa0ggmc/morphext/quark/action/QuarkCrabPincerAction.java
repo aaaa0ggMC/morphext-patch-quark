@@ -68,7 +68,7 @@ public class QuarkCrabPincerAction implements IAction, ICooldownAction {
         Vec3d look = entity.getLookVec();
         AxisAlignedBB aabb = entity.getEntityBoundingBox().grow(2.5D, 1.0D, 2.5D);
         List<EntityLivingBase> targets = world.getEntitiesWithinAABB(EntityLivingBase.class, aabb,
-                e -> e != null && e.isEntityAlive() && !e.equals(entity));
+                e -> e != null && e.isEntityAlive() && aaaa0ggmc.morphext.faction.FactionEnmity.isValidTargetFor(entity, e));
 
         DamageSource src = entity instanceof EntityPlayer ?
                 DamageSource.causePlayerDamage((EntityPlayer) entity) : DamageSource.causeMobDamage(entity);

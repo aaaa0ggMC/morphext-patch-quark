@@ -77,7 +77,7 @@ public class QuarkCrabRaveAction implements IAction, ICooldownAction {
         List<EntityLivingBase> nearby = world.getEntitiesWithinAABB(EntityLivingBase.class, aabb,
                 e -> e != null && e.isEntityAlive() && !e.equals(entity));
         for (EntityLivingBase ally : nearby) {
-            if (ally.isOnSameTeam(entity) || (!(ally instanceof IMob) && !(ally instanceof EntityPlayer))) {
+            if (aaaa0ggmc.morphext.faction.FactionEnmity.isAlly(entity, ally) || ally.isOnSameTeam(entity)) {
                 ally.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, RAVE_TICKS, 0, false, true));
             }
         }

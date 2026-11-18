@@ -1,11 +1,11 @@
 package aaaa0ggmc.morphext.quark.variant;
 
 import aaaa0ggmc.morphext.variant.IVariantHandler;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.Locale;
 
@@ -20,14 +20,15 @@ public class PirateCaptainVariantHandler implements IVariantHandler {
 
     @Override
     public boolean appliesTo(String morphName, EntityLivingBase entity) {
-        if (entity != null && entity.getClass().getName().contains("Pirate")) {
+        if (entity != null && entity.getClass().getName().startsWith("vazkii.quark.")
+                && entity.getClass().getName().contains("Pirate")) {
             return true;
         }
         if (morphName == null) {
             return false;
         }
         String lower = morphName.toLowerCase(Locale.ROOT);
-        return lower.endsWith("pirate");
+        return (lower.startsWith("quark:") || lower.startsWith("quark.")) && lower.endsWith("pirate");
     }
 
     @Override
@@ -47,16 +48,25 @@ public class PirateCaptainVariantHandler implements IVariantHandler {
     public String getVariantDisplayName(String variantKey, NBTTagCompound entityData) {
         if (VARIANT_CAPTAIN.equals(variantKey)) {
             if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
-                try {
-                    if (I18n.hasKey("morphext.variant.pirate_captain")) {
-                        return " " + I18n.format("morphext.variant.pirate_captain");
-                    }
-                } catch (Throwable ignored) {
+                String localized = formatClientVariant();
+                if (localized != null) {
+                    return localized;
                 }
             }
             return " (船长)";
         }
         return "";
+    }
+
+    @SideOnly(Side.CLIENT)
+    private static String formatClientVariant() {
+        try {
+            if (net.minecraft.client.resources.I18n.hasKey("morphext.variant.pirate_captain")) {
+                return " " + net.minecraft.client.resources.I18n.format("morphext.variant.pirate_captain");
+            }
+        } catch (Throwable ignored) {
+        }
+        return null;
     }
 
     @Override

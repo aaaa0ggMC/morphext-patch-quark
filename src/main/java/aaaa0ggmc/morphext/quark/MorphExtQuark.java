@@ -7,8 +7,8 @@ import aaaa0ggmc.morphext.quark.action.*;
 import mchorse.metamorph.api.MorphManager;
 import mchorse.metamorph.api.abilities.IAction;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
@@ -30,61 +30,22 @@ public class MorphExtQuark {
     @Mod.Instance(MODID)
     public static MorphExtQuark INSTANCE;
 
+    @SidedProxy(
+            clientSide = "aaaa0ggmc.morphext.quark.proxy.ClientProxy",
+            serverSide = "aaaa0ggmc.morphext.quark.proxy.CommonProxy"
+    )
+    public static aaaa0ggmc.morphext.quark.proxy.CommonProxy proxy;
+
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         LOGGER.info("[morphext-quark] Initializing {} v{}...", NAME, VERSION);
         registerActions();
-        registerPassives();
-        registerFactions();
         registerVariantHandlers();
-        MinecraftForge.EVENT_BUS.register(this);
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        // 注册 Quark 专属原生 MobAct 适配器
-        SafeMobActAction.registerAdapter(new QuarkMobActAdapter());
-        LOGGER.info("[morphext-quark] QuarkMobActAdapter registered successfully.");
-
-        // 客户端骨骼预设注入 (DI) 与创造模式选单变体提供者注入
-        if (event.getSide().isClient()) {
-            registerClientHands();
-            aaaa0ggmc.morphext.variant.MorphCreativeInjector.registerProvider(new aaaa0ggmc.morphext.quark.variant.QuarkVariantProvider());
-            LOGGER.info("[morphext-quark] QuarkVariantProvider registered into MorphCreativeInjector.");
-        }
-    }
-
-    private void registerClientHands() {
-        try {
-            aaaa0ggmc.morphext.client.hand.HandPreset crabPreset = new aaaa0ggmc.morphext.client.hand.HandPreset("rightArm", "leftArm");
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerModel("ModelCrab", crabPreset);
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerMorph("quark:crab", crabPreset);
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerMorph("quark.crab", crabPreset);
-
-            aaaa0ggmc.morphext.client.hand.HandPreset frogPreset = new aaaa0ggmc.morphext.client.hand.HandPreset("rightArm", "leftArm");
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerModel("ModelFrog", frogPreset);
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerMorph("quark:frog", frogPreset);
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerMorph("quark.frog", frogPreset);
-
-            aaaa0ggmc.morphext.client.hand.HandPreset stonelingPreset = new aaaa0ggmc.morphext.client.hand.HandPreset("arm_right", "arm_left", (float) Math.PI, 0, 0, 0, 0, 0);
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerModel("ModelStoneling", stonelingPreset);
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerMorph("quark:stoneling", stonelingPreset);
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerMorph("quark.stoneling", stonelingPreset);
-
-            aaaa0ggmc.morphext.client.hand.HandPreset wraithPreset = new aaaa0ggmc.morphext.client.hand.HandPreset("rightArm", "leftArm");
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerModel("ModelWraith", wraithPreset);
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerMorph("quark:wraith", wraithPreset);
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerMorph("quark.wraith", wraithPreset);
-
-            aaaa0ggmc.morphext.client.hand.HandPreset foxhoundPreset = new aaaa0ggmc.morphext.client.hand.HandPreset("rightFrontLeg", "leftFrontLeg");
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerModel("ModelFoxhound", foxhoundPreset);
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerMorph("quark:foxhound", foxhoundPreset);
-            aaaa0ggmc.morphext.client.hand.GenericHandRegistry.registerMorph("quark.foxhound", foxhoundPreset);
-
-            LOGGER.info("[morphext-quark] Injected Quark 3D model bone presets into GenericHandRegistry.");
-        } catch (Throwable t) {
-            LOGGER.warn("[morphext-quark] Failed to register client hand presets", t);
-        }
+        proxy.init();
     }
 
     private void registerActions() {
@@ -126,20 +87,6 @@ public class MorphExtQuark {
         MorphManager.INSTANCE.actions.put("morphext:" + id, action);
     }
 
-    private void registerPassives() {
-        try {
-            // 被动能力注册 (兼容 MorphExtension AbilityRegistry 与 Metamorph 注册表)
-            aaaa0ggmc.morphext.quark.passive.QuarkWraithLightFearPassive lightFear =
-                    new aaaa0ggmc.morphext.quark.passive.QuarkWraithLightFearPassive();
-            aaaa0ggmc.morphext.ability.AbilityRegistry.register(lightFear);
-            MorphManager.INSTANCE.abilities.put(lightFear.getId(), lightFear);
-
-            LOGGER.info("[morphext-quark] Registered Quark passive abilities into AbilityRegistry.");
-        } catch (Throwable t) {
-            LOGGER.warn("[morphext-quark] Failed to register passive abilities", t);
-        }
-    }
-
     private void registerVariantHandlers() {
         try {
             // 海盗船长变体（EntityPirate 的 captain 字段，60 血）
@@ -147,49 +94,6 @@ public class MorphExtQuark {
             LOGGER.info("[morphext-quark] Registered PirateCaptainVariantHandler into VariantRegistry.");
         } catch (Throwable t) {
             LOGGER.warn("[morphext-quark] Failed to register pirate captain variant handler", t);
-        }
-    }
-
-    private void registerFactions() {
-        try {
-            Faction underworld = FactionRegistry.get("underworld");
-            if (underworld != null) {
-                underworld.addPredicate(e -> {
-                    if (e == null) return false;
-                    String cls = e.getClass().getName();
-                    return cls.contains("Stoneling") || cls.contains("Dweller") || cls.contains("Wraith");
-                });
-            }
-
-            Faction aquatic = FactionRegistry.get("aquatic");
-            if (aquatic != null) {
-                aquatic.addPredicate(e -> {
-                    if (e == null) return false;
-                    String cls = e.getClass().getName();
-                    return cls.contains("Crab") || cls.contains("Frog");
-                });
-            }
-
-            Faction nether = FactionRegistry.get("nether");
-            if (nether != null) {
-                nether.addPredicate(e -> {
-                    if (e == null) return false;
-                    String cls = e.getClass().getName();
-                    return cls.contains("Foxhound") || cls.contains("Ashen");
-                });
-            }
-
-            Faction undead = FactionRegistry.get("undead");
-            if (undead != null) {
-                undead.addPredicate(e -> {
-                    if (e == null) return false;
-                    String cls = e.getClass().getName();
-                    return cls.contains("Dweller") || cls.contains("Ashen") || cls.contains("Pirate") || cls.contains("Wraith");
-                });
-            }
-            LOGGER.info("[morphext-quark] Injected Quark mob predicates into FactionRegistry.");
-        } catch (Throwable t) {
-            LOGGER.warn("[morphext-quark] Failed to inject faction predicates", t);
         }
     }
 }

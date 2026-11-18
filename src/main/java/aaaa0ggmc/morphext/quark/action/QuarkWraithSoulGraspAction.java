@@ -71,7 +71,7 @@ public class QuarkWraithSoulGraspAction implements IAction, ICooldownAction {
         double range = 10.0D;
         AxisAlignedBB aabb = entity.getEntityBoundingBox().grow(range, 3.0D, range);
         List<EntityLivingBase> targets = world.getEntitiesWithinAABB(EntityLivingBase.class, aabb,
-                e -> e != null && e.isEntityAlive() && !e.equals(entity));
+                e -> e != null && e.isEntityAlive() && aaaa0ggmc.morphext.faction.FactionEnmity.isValidTargetFor(entity, e));
 
         EntityLivingBase graspTarget = null;
         double minAngle = 0.6D;

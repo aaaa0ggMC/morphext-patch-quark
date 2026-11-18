@@ -1,7 +1,7 @@
 package aaaa0ggmc.morphext.quark;
 
 import aaaa0ggmc.morphext.integration.metamorph.SafeMobActAction;
-import aaaa0ggmc.morphext.quark.profiler.ProfilerBridge;
+import aaaa0ggmc.morphext.profiler.ProfilerBridge;
 import mchorse.metamorph.api.abilities.IAction;
 import mchorse.metamorph.api.morphs.AbstractMorph;
 import net.minecraft.entity.EntityLiving;
@@ -18,7 +18,10 @@ public class QuarkMobActAdapter implements SafeMobActAction.IMobActAdapter {
     @Override
     public boolean handleMobAct(EntityLivingBase player, AbstractMorph morph, EntityLiving dummy, @Nullable EntityLivingBase targetEnemy, Vec3d lookTarget) {
         if (morph == null || morph.name == null) return false;
-        String name = morph.name.toLowerCase();
+        String name = morph.name.toLowerCase(java.util.Locale.ROOT);
+        if (!name.startsWith("quark:") && !name.startsWith("quark.")) {
+            return false;
+        }
 
         long start = ProfilerBridge.begin();
         try {

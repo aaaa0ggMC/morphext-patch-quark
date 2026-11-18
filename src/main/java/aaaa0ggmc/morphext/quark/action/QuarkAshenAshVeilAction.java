@@ -70,8 +70,7 @@ public class QuarkAshenAshVeilAction implements IAction, ICooldownAction {
         double radius = 4.0D;
         AxisAlignedBB aabb = entity.getEntityBoundingBox().grow(radius, 2.5D, radius);
         List<EntityLivingBase> targets = world.getEntitiesWithinAABB(EntityLivingBase.class, aabb,
-                e -> e != null && e.isEntityAlive() && !e.equals(entity)
-                        && (e instanceof IMob || (e instanceof EntityPlayer && !e.isOnSameTeam(entity))));
+                e -> e != null && e.isEntityAlive() && aaaa0ggmc.morphext.faction.FactionEnmity.isValidTargetFor(entity, e));
 
         for (EntityLivingBase target : targets) {
             target.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 60, 0, false, true));

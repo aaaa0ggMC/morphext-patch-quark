@@ -55,3 +55,5 @@ morphext.metamorph.desc.quark_pirate_captain=吹响船长号令：周围亡灵�
 morphext.metamorph.action.quark_archaeologist_appraise=鉴宝交易
 morphext.metamorph.desc.quark_archaeologist_appraise=消耗 1 枚绿宝石进行专家鉴宝，随机收获 2-4 件矿物或宝物类鉴定品掉落，伴随交易音效与闪光！（冷却 60 秒）
 morphext.variant.pirate_captain=(船长)
+morph.category.quark=夸克生灵
+morphext.faction.underworld.desc=包含岩石灵、潜影骷髅与怨灵等栖息在基岩与矿脉深处的异界生灵。
