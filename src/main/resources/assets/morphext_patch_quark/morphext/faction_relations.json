@@ -12,6 +12,14 @@
     "quark.stoneling": ["underworld"],
     "quark:wraith": ["underworld", "undead"],
     "quark.wraith": ["underworld", "undead"],
+    "quark:dweller": ["underworld", "undead"],
+    "quark.dweller": ["underworld", "undead"],
+    "quark:ashen": ["nether", "undead"],
+    "quark.ashen": ["nether", "undead"],
+    "quark:pirate": ["undead"],
+    "quark.pirate": ["undead"],
+    "quark:archaeologist": ["villager"],
+    "quark.archaeologist": ["villager"],
     "quark:foxhound": ["nether", "beast"],
     "quark.foxhound": ["nether", "beast"],
     "quark:crab": ["crustacean", "animal"],
@@ -21,6 +29,8 @@
   },
   "relations": [
     { "from": "underworld", "to": "underworld", "relation": "RELATIVE", "symmetric": true },
+    { "from": "underworld", "to": "golem", "relation": "ENEMY", "symmetric": true },
+    { "from": "underworld", "to": "villager", "relation": "ENEMY", "symmetric": true },
     { "from": "crustacean", "to": "crustacean", "relation": "RELATIVE", "symmetric": true }
   ]
 }
